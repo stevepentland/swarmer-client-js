@@ -1,3 +1,8 @@
 {
-  "extends": "tslint:latest"
+  "extends": "tslint:latest",
+  "rules": {
+    "quotemark": [true, "single"],
+    "no-var-keyword": true,
+    "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"]
+  }
 }
