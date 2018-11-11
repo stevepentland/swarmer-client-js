@@ -1,4 +1,3 @@
-import { spawnSync } from 'child_process';
 import { request } from 'http';
 import { RequestOptions } from 'https';
 import { RunnerConfig } from './models/config';
@@ -15,7 +14,7 @@ function run() {
     const cfg = RunnerConfig.fromEnvironment();
 
     // Instantiate the runner
-    const runner: TaskRunner = new TaskRunner(cfg, spawnSync);
+    const runner: TaskRunner = new TaskRunner(cfg);
 
     // Instruct the runner to start the task
     const result = runner.start();
