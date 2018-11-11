@@ -1,10 +1,6 @@
-import { SpawnSyncOptionsWithStringEncoding, SpawnSyncReturns } from 'child_process';
+import { spawnSync } from 'child_process';
 import { RunnerConfig } from '../models/config';
 import { IRunResult } from '../models/results';
-
-export type Spawner = (command: string,
-                       args?: ReadonlyArray<string>,
-                       options?: SpawnSyncOptionsWithStringEncoding) => SpawnSyncReturns<string>;
 
 export class TaskRunner {
     /**
@@ -13,10 +9,10 @@ export class TaskRunner {
      * @param config The runner configuration object
      * @param spawner The spawn function matching `child_process.spawn`
      */
-    constructor(private config: RunnerConfig, private spawner: Spawner) { }
+    constructor(private config: RunnerConfig) { }
 
     public start(): IRunResult {
-        const proc = this.spawner(
+        const proc = spawnSync(
             this.config.runCmd,
             this.config.runArgs,
             { cwd: this.config.runBase, encoding: 'utf8' },

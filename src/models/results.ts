@@ -4,10 +4,10 @@
  */
 export interface IRunResultOutput {
     /** The output passed to the standard output stream, if any */
-    stdout: string | null;
+    stdout: string | null | undefined;
 
     /** The output passed to the standard error stream, if any */
-    stderr: string | null;
+    stderr: string | null | undefined;
 }
 
 /**

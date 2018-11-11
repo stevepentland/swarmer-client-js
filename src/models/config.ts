@@ -77,7 +77,7 @@ export class RunnerConfig {
         }
 
         if (!runCmd) {
-            throw new Error('Was expecting RUN_COMMAND to be set, but it was not...');
+            throw new Error('Was expecting RUN_CMD to be set, but it was not...');
         }
 
         if (!swarmerAddr) {
@@ -100,23 +100,30 @@ export class RunnerConfig {
 
         const argsArr = envArgs ? envArgs.split(',').map((arg) => arg.trim()) : [];
 
-        return new RunnerConfig(runCmd, runBase, swarmerAddr, swarmerPort, taskName, swarmerJobId, argsArr);
+        return new RunnerConfig(runBase,
+            runCmd,
+            swarmerAddr,
+            swarmerPort,
+            taskName,
+            swarmerJobId,
+            argsArr);
     }
 
-    /**
-     * Create a new `RunnerConfig` instance
-     *
-     * @param _runBase The base directory to run the target application from
-     * @param _runCmd The comand to run
-     * @param _swarmerAddress The callback address for swarmer
-     * @param _swarmerPort The port that swarmer is listening on
-     * @param _runArgs Any arguments to pass to the application
-     */
+     /**
+      *
+      * @param _runBase The base directory to run the target application from
+      * @param _runCmd The comand to run
+      * @param _swarmerAddress The callback address for swarmer
+      * @param _swarmerPort The port that swarmer is listening on
+      * @param _taskName The name of the task to run
+      * @param _jobId The unique swarmer job identifier
+      * @param _runArgs Any arguments to pass to the application
+      */
     protected constructor(private _runBase: string,
                           private _runCmd: string,
                           private _swarmerAddress: string,
                           private _swarmerPort: string,
                           private _taskName: string,
                           private _jobId: string,
-                          private _runArgs: string[] = []) {}
+                          private _runArgs: string[]) {}
 }
