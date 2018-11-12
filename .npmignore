@@ -1,0 +1,11 @@
+src
+__mocks__
+coverage
+.git
+.gitignore
+.npmignore
+jest*
+*.tgz
+tsconfig.json
+tslint.json
+yarn-error.log
