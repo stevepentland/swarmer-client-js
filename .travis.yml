@@ -4,8 +4,7 @@ node_js:
 deploy:
   provider: npm
   email: stevepentland@gmail.com
-  api_key:
-    secure: pupFEI60XxfukcosXZyW1lDSp+mQ3zug7NbgzIRZy7Re4hlFsWNqXxmpsD/Av/Z5GfiMMufygOBckI7iuvZqPs4yxPrCTCgLwwNtIypczkvYC6H6GnSWIoBqJiT9jH7XV3G/wswLEH7IfYppKNI/g07pA5BE1cS4fOwShecH2Pr+0UIiyHMKFtexQ4livYw/SIFU/n1Qfjl2EaA6GAOE4vZYAm13sbNNEXhsSWpPDwfGIvglHUMHjV0XErIaViUpvmiR9aRmdJ532GPmi5y2ZCRgryCOjcTvysTuhzREHAQCCYBwFDgCHEQgkO6Q+QM4szxfv87WIPUzqgK/ieDaA7LnBtS6EUs04/VA+Bbfr8gQP5+LEXlL9/HXb+MWZtRmdcW8TQNal/GYXwag+rJc2rHQidzQxRnflGIdKayMhbzVyQrM+/gEYnFkUXiI43N//S/HQAVLF3tNbJP2jZ3GwrV5R4LBDVYud7xW3DQaO6slqrKiNaLLvYCvmFH0NcXnrxOWbSorgr+7v3y+SI7HQbrQdHf/4fahsNb4Ph26uaBww8wbHwcIU32qTUX+FovzWmIXekJPsZwjU65QjozZou3TQrVL4Dbm6zPvqY0+qkj1hob55gtSJPkNFPhO+kaz2NelJlYnASLXY+9VQIBIRtxB39hjHC+3SuxvD1mFvPs=
+  api_key: $NPM_TOKEN
   skip_cleanup: true
   on:
     tags: true
