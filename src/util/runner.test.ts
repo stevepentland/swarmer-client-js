@@ -21,7 +21,7 @@ class MockConfig extends RunnerConfig {
     }
 }
 
-test('TaskRunner extracted properties as expected', () => {
+test.skip('TaskRunner extracted properties as expected', () => {
     const cfg: RunnerConfig = new MockConfig('/app',
         'command',
         'swarmer',
