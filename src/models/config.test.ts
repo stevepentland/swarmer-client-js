@@ -29,16 +29,11 @@ afterEach(() => {
     },
     {
         envs: ['RUN_BASE_DIR', 'RUN_CMD', 'SWARMER_ADDRESS'],
-        msg: 'Was expecting SWARMER_PORT to be set, but it was not...',
-        name: 'SWARMER_PORT',
-    },
-    {
-        envs: ['RUN_BASE_DIR', 'RUN_CMD', 'SWARMER_ADDRESS', 'SWARMER_PORT'],
         msg: 'Was expecting TASK_NAME to be set, but it was not...',
         name: 'TASK_NAME',
     },
     {
-        envs: ['RUN_BASE_DIR', 'RUN_CMD', 'SWARMER_ADDRESS', 'SWARMER_PORT', 'TASK_NAME'],
+        envs: ['RUN_BASE_DIR', 'RUN_CMD', 'SWARMER_ADDRESS', 'TASK_NAME'],
         msg: 'Was expecting SWARMER_JOB_ID to be set, but it was not...',
         name: 'SWARMER_JOB_ID',
     },
@@ -55,7 +50,6 @@ test('Should properly set fields from env', () => {
     const expectedBase = '/dir';
     const expectedCmd = 'cmd';
     const expectedAddr = 'swarmer';
-    const expectedPort = '8500';
     const expectedName = 'TheTask';
     const expectedId = 'ABC123';
     const originalArgs = '-a, --arg2, something, -v';
@@ -64,7 +58,6 @@ test('Should properly set fields from env', () => {
     process.env.RUN_BASE_DIR = expectedBase;
     process.env.RUN_CMD = expectedCmd;
     process.env.SWARMER_ADDRESS = expectedAddr;
-    process.env.SWARMER_PORT = expectedPort;
     process.env.TASK_NAME = expectedName;
     process.env.SWARMER_JOB_ID = expectedId;
     process.env.RUN_ARGS = originalArgs;
@@ -73,7 +66,6 @@ test('Should properly set fields from env', () => {
     expect(actual.runCmd).toBe(expectedCmd);
     expect(actual.runBase).toBe(expectedBase);
     expect(actual.swarmerAddress).toBe(expectedAddr);
-    expect(actual.swarmerPort).toBe(expectedPort);
     expect(actual.runArgs).toEqual(expectedArgs);
     expect(actual.taskName).toBe(expectedName);
     expect(actual.jobId).toBe(expectedId);
@@ -83,14 +75,12 @@ test('Should have empty args if not set', () => {
     const expectedBase = '/dir';
     const expectedCmd = 'cmd';
     const expectedAddr = 'swarmer';
-    const expectedPort = '8500';
     const expectedName = 'TheTask';
     const expectedId = 'ABC123';
 
     process.env.RUN_BASE_DIR = expectedBase;
     process.env.RUN_CMD = expectedCmd;
     process.env.SWARMER_ADDRESS = expectedAddr;
-    process.env.SWARMER_PORT = expectedPort;
     process.env.TASK_NAME = expectedName;
     process.env.SWARMER_JOB_ID = expectedId;
 
@@ -98,7 +88,6 @@ test('Should have empty args if not set', () => {
     expect(actual.runCmd).toBe(expectedCmd);
     expect(actual.runBase).toBe(expectedBase);
     expect(actual.swarmerAddress).toBe(expectedAddr);
-    expect(actual.swarmerPort).toBe(expectedPort);
     expect(actual.runArgs).toEqual([]);
     expect(actual.taskName).toBe(expectedName);
     expect(actual.jobId).toBe(expectedId);

@@ -7,14 +7,12 @@ class MockConfig extends RunnerConfig {
     constructor(runBase: string,
                 runCmd: string,
                 swarmerAddress: string,
-                swarmerPort: string,
                 taskName: string,
                 jobId: string,
                 runArgs: string[]) {
         super(runBase,
             runCmd,
             swarmerAddress,
-            swarmerPort,
             taskName,
             jobId,
             runArgs);
@@ -25,7 +23,6 @@ test.skip('TaskRunner extracted properties as expected', () => {
     const cfg: RunnerConfig = new MockConfig('/app',
         'command',
         'swarmer',
-        '8500',
         'TestTask1',
         'IDENTIFIER',
         ['-a', '--something']);

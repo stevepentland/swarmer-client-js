@@ -1,5 +1,4 @@
-import { request } from 'http';
-import { RequestOptions } from 'https';
+import axios from 'axios';
 import { RunnerConfig } from './models/config';
 import { IRunResult } from './models/results';
 import { TaskRunner } from './util/runner';
@@ -30,20 +29,10 @@ function run() {
  * @param result The result of the run operation
  */
 function sendResult(cfg: RunnerConfig, result: IRunResult): void {
-    const reqData = JSON.stringify(result);
-    const opts: RequestOptions = {
-        headers: {
-            'Content-Length': Buffer.byteLength(JSON.stringify(reqData)),
-            'Content-Type': 'application/json',
-        },
-        host: cfg.swarmerAddress,
-        method: 'POST',
-        path: `/result/${cfg.jobId}`,
-        port: cfg.swarmerPort,
-    };
-    const req = request(opts);
-    req.write(reqData);
-    req.end();
+    process.stdout.write('Sending results to swarmer master\n');
+    axios.post(cfg.swarmerAddress, result)
+        .then((resp) => process.stdout.write(`Result sent, status ${resp.status}`))
+        .catch((err) => process.stderr.write(`Error on result update:\n${err}`));
 }
 
 run();

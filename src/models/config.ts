@@ -22,13 +22,6 @@ export class RunnerConfig {
     }
 
     /**
-     * Retrieve the port that `swarmer` master is listening on
-     */
-    public get swarmerPort(): string {
-        return this._swarmerPort;
-    }
-
-    /**
      * Retrieve the args to pass to `runCmd`, if any
      */
     public get runArgs(): string[] {
@@ -68,7 +61,6 @@ export class RunnerConfig {
         const runBase = process.env.RUN_BASE_DIR;
         const runCmd = process.env.RUN_CMD;
         const swarmerAddr = process.env.SWARMER_ADDRESS;
-        const swarmerPort = process.env.SWARMER_PORT;
         const taskName = process.env.TASK_NAME;
         const swarmerJobId = process.env.SWARMER_JOB_ID;
 
@@ -82,10 +74,6 @@ export class RunnerConfig {
 
         if (!swarmerAddr) {
             throw new Error('Was expecting SWARMER_ADDRESS to be set, but it was not...');
-        }
-
-        if (!swarmerPort) {
-            throw new Error('Was expecting SWARMER_PORT to be set, but it was not...');
         }
 
         if (!taskName) {
@@ -103,7 +91,6 @@ export class RunnerConfig {
         return new RunnerConfig(runBase,
             runCmd,
             swarmerAddr,
-            swarmerPort,
             taskName,
             swarmerJobId,
             argsArr);
@@ -122,7 +109,6 @@ export class RunnerConfig {
     protected constructor(private _runBase: string,
                           private _runCmd: string,
                           private _swarmerAddress: string,
-                          private _swarmerPort: string,
                           private _taskName: string,
                           private _jobId: string,
                           private _runArgs: string[]) {}

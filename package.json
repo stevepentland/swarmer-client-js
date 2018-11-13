@@ -1,6 +1,6 @@
 {
   "name": "swarmer-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A client designed to work with the swarmer application inside docker",
   "main": "./lib/index.js",
   "repository": {
@@ -13,10 +13,12 @@
   },
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
   "devDependencies": {
     "@types/jest": "^23.3.9",
-    "@types/node": "^10.12.3",
+    "@types/node": "^10.12.6",
     "jest": "^23.6.0",
     "ts-jest": "^23.10.4",
     "tslint": "^5.11.0",
