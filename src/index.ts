@@ -11,6 +11,7 @@ import { TaskRunner } from './util/runner';
 function run() {
     // Get the configuration
     const cfg = RunnerConfig.fromEnvironment();
+    process.stdout.write(`Running with configuration:\n${JSON.stringify(cfg, null, 4)}`);
 
     // Instantiate the runner
     const runner: TaskRunner = new TaskRunner(cfg);
@@ -29,10 +30,10 @@ function run() {
  * @param result The result of the run operation
  */
 function sendResult(cfg: RunnerConfig, result: IRunResult): void {
-    process.stdout.write('Sending results to swarmer master\n');
+    process.stdout.write(`Sending results to swarmer master:\n${JSON.stringify(result, null, 4)}\n`);
     axios.post(cfg.swarmerAddress, result)
         .then((resp) => process.stdout.write(`Result sent, status ${resp.status}`))
-        .catch((err) => process.stderr.write(`Error on result update:\n${err}`));
+        .catch((err) => process.stderr.write('Error on result update:\n' + err));
 }
 
 run();
