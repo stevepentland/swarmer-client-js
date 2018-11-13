@@ -1,0 +1,44 @@
+{
+  "name": "swarmer-client-js",
+  "version": "0.1.0",
+  "description": "A client designed to work with the swarmer application inside docker",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stevepentland/swarmer-client-js.git"
+  },
+  "author": {
+    "name": "Steve Pentland",
+    "email": "swarmerproject@outlook.com"
+  },
+  "license": "MIT",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.3",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.4",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
+  },
+  "bugs": {
+    "url": "https://github.com/stevepentland/swarmer-client-js/issues"
+  },
+  "homepage": "https://github.com/stevepentland/swarmer-client-js#readme",
+  "bin": {
+    "swarmer-client": "bin/swarmer-client"
+  },
+  "files": [
+    "lib/*",
+    "bin/*"
+  ],
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "prepare": "npm run build",
+    "test": "jest",
+    "test:cov": "jest --coverage"
+  }
+}

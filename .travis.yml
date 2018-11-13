@@ -3,7 +3,7 @@ node_js:
 - '10.13'
 deploy:
   provider: npm
-  email: stevepentland@gmail.com
+  email: swarmerproject@outlook.com
   api_key: $NPM_TOKEN
   skip_cleanup: true
   on:
