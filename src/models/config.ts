@@ -58,8 +58,8 @@ export class RunnerConfig {
      * @throws An error if any of the listed variables except for `RUN_ARGS` are missing
      */
     public static fromEnvironment() {
+        let runCmd = process.env.RUN_CMD;
         const runBase = process.env.RUN_BASE_DIR;
-        const runCmd = process.env.RUN_CMD;
         const swarmerAddr = process.env.SWARMER_ADDRESS;
         const taskName = process.env.TASK_NAME;
         const swarmerJobId = process.env.SWARMER_JOB_ID;
@@ -85,8 +85,17 @@ export class RunnerConfig {
         }
 
         const envArgs = process.env.RUN_ARGS;
+        const argsArr = [];
 
-        const argsArr = envArgs ? envArgs.split(',').map((arg) => arg.trim()) : [];
+        if (/\s+/g.test(runCmd)) {
+            const parts = runCmd.match(/\S+/g) || [runCmd];
+            runCmd = parts.shift() || runCmd;
+            argsArr.push(...parts);
+        }
+
+        if (envArgs) {
+            argsArr.push(...envArgs.split(',').map((arg) => arg.trim()));
+        }
 
         return new RunnerConfig(runBase,
             runCmd,

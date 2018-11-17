@@ -92,3 +92,36 @@ test('Should have empty args if not set', () => {
     expect(actual.taskName).toBe(expectedName);
     expect(actual.jobId).toBe(expectedId);
 });
+
+test('Should gracefully handle runCmd with spaces', () => {
+    const originalCmd = 'node command subcommand';
+    const expectedCmd = 'node';
+    const expectedArgs = ['command', 'subcommand'];
+
+    process.env.RUN_BASE_DIR = '/dir';
+    process.env.RUN_CMD = originalCmd;
+    process.env.SWARMER_ADDRESS = 'swarmer';
+    process.env.TASK_NAME = 'task';
+    process.env.SWARMER_JOB_ID = 'abc123';
+
+    const actual = RunnerConfig.fromEnvironment();
+    expect(actual.runCmd).toBe(expectedCmd);
+    expect(actual.runArgs).toEqual(expectedArgs);
+});
+
+test('Should prepend elements after first in runCmd with spaces to args', () => {
+    const originalCmd = 'node command subcommand';
+    const expectedCmd = 'node';
+    const expectedArgs = ['command', 'subcommand', 'argOne', '--something', 'value'];
+
+    process.env.RUN_BASE_DIR = '/dir';
+    process.env.RUN_CMD = originalCmd;
+    process.env.SWARMER_ADDRESS = 'swarmer';
+    process.env.RUN_ARGS = 'argOne,--something,value';
+    process.env.TASK_NAME = 'task';
+    process.env.SWARMER_JOB_ID = 'abc123';
+
+    const actual = RunnerConfig.fromEnvironment();
+    expect(actual.runCmd).toBe(expectedCmd);
+    expect(actual.runArgs).toEqual(expectedArgs);
+});
