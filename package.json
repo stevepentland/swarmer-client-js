@@ -1,6 +1,6 @@
 {
   "name": "swarmer-client",
-  "version": "1.1.1",
+  "version": "1.1.0",
   "description": "A client designed to work with the swarmer application inside docker",
   "main": "./lib/index.js",
   "repository": {
