@@ -3,7 +3,7 @@
 
 [![Build Status](https://travis-ci.com/stevepentland/swarmer-client-js.svg?branch=master)](https://travis-ci.com/stevepentland/swarmer-client-js) 
 [![npm version](https://badge.fury.io/js/swarmer-client.svg)](https://badge.fury.io/js/swarmer-client)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Greenkeeper badge](https://badges.greenkeeper.io/stevepentland/swarmer-client-js.svg)](https://greenkeeper.io/)
 
 This is meant to be a companion application to work with [swarmer](https://github.com/stevepentland/swarmer). It is designed to act as the main 
 [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint) in a
