@@ -44,7 +44,7 @@
     "prepare": "npm run build",
     "test": "jest",
     "test:cov": "jest --coverage",
-    "travis-deploy-once": "travis-deploy-once",
+    "travis-deploy-once": "travis-deploy-once --pro",
     "semantic-release": "semantic-release"
   }
 }
