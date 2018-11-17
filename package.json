@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/stevepentland/swarmer-client-js.git"
+    "url": "https://github.com/stevepentland/swarmer-client-js.git"
   },
   "author": {
     "name": "Steve Pentland",
