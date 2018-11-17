@@ -22,7 +22,9 @@
     "jest": "^23.6.0",
     "ts-jest": "^23.10.4",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "travis-deploy-once": "^5.0.9",
+    "semantic-release": "^15.12.0"
   },
   "bugs": {
     "url": "https://github.com/stevepentland/swarmer-client-js/issues"
@@ -41,6 +43,8 @@
     "lint": "tslint -c tslint.json src/**/*.ts",
     "prepare": "npm run build",
     "test": "jest",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   }
 }
